@@ -6,22 +6,19 @@ function App() {
   const showEmployees = true ;
   return (
     <div className="App">
-      
-      { console.log( 'inside the return ' ) }
 
       { showEmployees ? ( 
-        // if ture 
+      // if ture 
         <>
-          <Employee />
-          <Employee />
-          <Employee />
-          <Employee />
-          <Employee />
+          <Employee name="Jack" role="Intern"/>
+          <Employee name="Calabe" role="Professor"/>
+          <Employee name="Abby"/>
         </>
       // if false
       ) : ( 
-      <p>You cannot see the employees</p>
+        <p>You cannot see the employees</p>
     ) } 
+
     </div>
   );
 }
