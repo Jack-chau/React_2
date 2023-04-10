@@ -68,3 +68,52 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# React README
+
+## Introduction
+
+React is a popular JavaScript library for building user interfaces. It was developed by Facebook and is now maintained by a community of developers. React is known for its simplicity, performance, and flexibility.
+
+## Getting Started
+
+To use React, you will need to have Node.js and npm installed on your machine. You can install them by following the instructions on the official Node.js website. Once you have Node.js and npm installed, you can create a new React project using the create-react-app command line tool.
+
+```
+npx create-react-app my-app
+cd my-app
+npm start
+
+```
+
+## Components
+
+The building blocks of a React application are components. A component is a self-contained piece of code that represents a part of the user interface. Components can be nested inside other components to create complex UIs. React provides two types of components: functional components and class components.
+
+### Functional Components
+
+Functional components are a simpler way to write components. They are just plain JavaScript functions that return JSX. Here is an example of a functional component that displays a simple message:
+
+```
+function Hello() {
+  return <h1>Hello, world!</h1>;
+}
+
+```
+
+### Class Components
+
+Class components are more powerful than functional components. They are JavaScript classes that extend the React.Component class. Here is an example of a class component that displays a message:
+
+```
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello, world!</h1>;
+  }
+}
+
+```
+
+## Conclusion
+
+React is a powerful and flexible library for building user interfaces. Its simplicity and performance make it a popular choice among developers. With the knowledge gained from this README, you should be able to start building your own React applications.
