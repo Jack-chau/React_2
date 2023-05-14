@@ -13,7 +13,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header() {
+export default function Header( props ) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -141,14 +141,15 @@ export default function Header() {
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
-                >
+                >s
                   {item.name}
                 </Disclosure.Button>
               ))}
             </div>
           </Disclosure.Panel>
+          { props.children } // Employees
         </>
       )}
     </Disclosure>
-  )
+  );
 }
