@@ -2,6 +2,9 @@ import './index.css';
 import Employee from './components/Employee'
 import { useState } from 'react' ;
 import { v4 as uuidv4 } from 'uuid' ;
+import AddEmployee from './components/AddEmployee';
+import EditEmployee from './components/EditEmployee';
+import Header from './components/Header';
 
 function App() {
   const [ role, setRole ] = useState( 'no Role' ) ;
@@ -52,27 +55,36 @@ function App() {
     setEmployees( updatedEmployees ) ;
   }
 
+  function newEmployee( name, role, img ) {
+    const newEmployee = {
+      id : uuidv4( ),
+      name : name ,
+      role : role ,
+      img : img ,
+    }
+    setEmployees( [ ...employees, newEmployee ] )
+  }
+
   const showEmployees = true ;
 
   return (
-    <div className="App" >
+    <div className="App bg-gray-300 min-h-screen" >
+
+      <Header />
 
       { showEmployees ? (
       // if ture 
         <>
-          <input 
-            type = "text"
-            onChange = { ( e ) => {
-            // console.log( e.target.value ) ;
-              setRole( e.target.value ) ;
-            } }
-          />
-
-          <div className="flex flex-wrap justify-center">
-
+          <div className="flex flex-wrap justify-center my-2">
             { employees.map( ( employee ) => {
-              // console.log( employee ) ;
-              // console.log( uuidv4() ) ;
+                const editEmployee = (
+                  < EditEmployee 
+                      id = { employee.id }
+                      name = { employee.name }
+                      role = { employee.role }
+                      updateEmployee = { updateEmployee }
+                  />
+                ) ;
               return (
                 <Employee
                   key = { employee.id }
@@ -80,17 +92,16 @@ function App() {
                   name = { employee.name }
                   role = { employee.role }
                   img = { employee.img }
-                  updateEmployee = { updateEmployee }
+                  editEmployee = { editEmployee }
                 />
-
               ) ; }
-
             ) }
-
           </div>
 
+          <div className='flex flex-wrap justify-center'>
+            { <AddEmployee newEmployee = { newEmployee } ></AddEmployee>}
+          </div>
         </>
-        
       // if false
       ) : ( 
         <p>You cannot see the employees</p>
