@@ -1,11 +1,17 @@
 import Employees from './pages/Employees';
 import Header from './components/Header' ;
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom' ;
+import Customers from './pages/Customers';
 function App() {
   return (
-    <Header>
-      <Employees />
-    </Header>
+    <BrowserRouter>
+      <Header>
+        <Routes>
+          <Route path='/Employees' element={ <Employees /> } />
+          <Route path='/customers' element={ <Customers /> } />
+        </Routes>
+      </Header>
+    </BrowserRouter>
   ) ;
 }
 
