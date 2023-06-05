@@ -1,20 +1,20 @@
-import { Fragment } from 'react' ;
-import { Disclosure, Menu, Transition } from '@headlessui/react' ;
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline' ;
-import { NavLink } from 'react-router-dom' ;
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: 'Employees', href: '/Employees' },
-  { name: 'Customers', href: '/Customers' },
-  { name: 'Projects', href: '/other' },
-  { name: 'Calendar', href: '/other2' },
-]
+  { name: "Employees", href: "/employees" },
+  { name: "Customers", href: "/customers" },
+  { name: "Dictionary", href: "/dictionary" },
+  { name: "Calendar", href: "/other2" },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-export default function Header( props ) {
+export default function Header(props) {
   return (
     <>
       <Disclosure as="nav" className="bg-gray-800">
@@ -48,24 +48,25 @@ export default function Header( props ) {
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
-                          { /*
+                      {/*
                                 className={classNames(
                                 item.current 
                                     ? ' no-underline bg-gray-900 text-white' 
                                     : ' no-underline  text-gray-300 hover:bg-gray-700 hover:text-white',
                                 'rounded-md px-3 py-2 text-sm font-medium'
                                 )}
-                              */
-                          }
+                              */}
                       {navigation.map((item) => (
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className = { ( {isActive} ) => {
-                            return ( ' no-underline px-3 py-2 text-sm font-medium ' +
-                              ( !isActive ? ' no-underline  text-gray-300 hover:bg-gray-700 hover:text-white'
-                              : ' no-underline bg-gray-900 text-white' )
-                            )
+                          className={({ isActive }) => {
+                            return (
+                              " no-underline px-3 py-2 text-sm font-medium " +
+                              (!isActive
+                                ? " no-underline  text-gray-300 hover:bg-gray-700 hover:text-white"
+                                : " no-underline bg-gray-900 text-white")
+                            );
                           }}
                         >
                           {item.name}
@@ -92,13 +93,16 @@ export default function Header( props ) {
                   <NavLink
                     key={item.name}
                     to={item.href}
-                    className = { ( {isActive} ) => {
-                    return ( ' no-underline block rounded-md px-3 py-2 text-base font-medium ' +
-                      ( isActive ? ' bg-gray-900 text-white '
-                      : ' text-gray-300 hover:bg-gray-700 hover:text-white ' )
-                      )
-                    }}>
-                      { item.name }
+                    className={({ isActive }) => {
+                      return (
+                        " no-underline block rounded-md px-3 py-2 text-base font-medium " +
+                        (isActive
+                          ? " bg-gray-900 text-white "
+                          : " text-gray-300 hover:bg-gray-700 hover:text-white ")
+                      );
+                    }}
+                  >
+                    {item.name}
                   </NavLink>
                 ))}
               </div>
@@ -106,11 +110,11 @@ export default function Header( props ) {
           </>
         )}
       </Disclosure>
-      <div className = "bg-gray-300">
-        <div className = "min-h-screen px-2 py-2 mx-auto max-w-7xl">
-          { props.children }
+      <div className="bg-gray-300">
+        <div className="min-h-screen px-2 py-2 mx-auto max-w-7xl">
+          {props.children}
         </div>
-      </div>  
-    </> 
+      </div>
+    </>
   );
 }
