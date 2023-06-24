@@ -14,7 +14,7 @@ function Employees() {
         name : "Jack",
         role : "Intern",
         img : "https://images.pexels.com/photos/1098684/pexels-photo-1098684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-     },
+     }, 
 
      {
       id : 2,
