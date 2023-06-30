@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react' ;
+import { useNavigate } from 'react-router-dom';
 
 export default function Dictionary( ) {
-    const [ word, setWord ] = useState( ) ;
-    const [ word2, setWord2 ] = useState( '' ) ;
+    const [ word, setWord ] = useState( '' ) ;
+    const navigate = useNavigate( ) ;
 
 /* First Way To Use useEffect
 // no dependency array --> update for any state change
@@ -42,25 +43,20 @@ export default function Dictionary( ) {
 */
     return ( 
         <>
+            <h2>What you want to search:</h2>
             <input 
                 type='text' 
                 onChange={ (event) => {
                 setWord( event.target.value ) ;
-
                 }} 
             />
-            <h1>Let's get the definition for { word }</h1>
-            
-            <input
-                type = 'text'
-                onChange = { 
-                    ( event ) => {
-                        setWord2( event.target.value ) ;
-                    }
-                }
-            />
-            <h2>Let's get the definition for { word2 }</h2>
-
+            <button 
+                onClick = { ( ) => {
+                    navigate( '/definition/' + word, { replace : true } )  // for more, see redirect
+                } }
+            >
+                search
+            </button>
         </>
     )
 }
