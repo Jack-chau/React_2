@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react' ;
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid' ;
 import NotFound from '../components/404' ;
+import Dictionary from './Dictionary';
+import DefinitionSearch from '../components/DefinitionSearch';
 
 export default function Definition( ) {
     const [ word, setWord ] = useState( [ ] ) ;
@@ -17,7 +19,7 @@ export default function Definition( ) {
             const dictionaryUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + search 
             const fakeUrl = "http://chk.com"
             async function logJSONData() {
-                const response = await fetch( httpErrorUrl ) ;
+                const response = await fetch( dictionaryUrl ) ;
                 // console.log( response.status )
                 if ( response.status === 404 ) {
                     // console.log( response.status ) ;
@@ -78,6 +80,8 @@ export default function Definition( ) {
                                     </p>
                                 ) ;
                             } ) }
+                            <p>Search again:</p>
+                            < DefinitionSearch />
                         </>
                     : ( 
                         null

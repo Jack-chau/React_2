@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react' ;
-import { useNavigate } from 'react-router-dom';
+import DifinitionSearch from '../components/DefinitionSearch' ;
 
 export default function Dictionary( ) {
-    const [ word, setWord ] = useState( '' ) ;
-    const navigate = useNavigate( ) ;
+    return( 
+        <div className="flex justify-center">
+            < DifinitionSearch />
+        </div>
+    )
+}
 
 /* First Way To Use useEffect
 // no dependency array --> update for any state change
@@ -42,21 +45,4 @@ export default function Dictionary( ) {
     )
 */
 
-// <form /> can use 'enter' key to submmit
-    return ( 
-        < form onSubmit = {
-            () => {
-                navigate( '/definition/' + word ) ;
-            }
-        } >
-            <h2>What you want to search:</h2>
-            <input 
-                type='text' 
-                onChange={ (event) => {
-                setWord( event.target.value ) ;
-                }} 
-            />
-            <button>Search</button>
-        </form>
-    )
-}
+
