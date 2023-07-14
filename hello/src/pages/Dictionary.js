@@ -41,8 +41,14 @@ export default function Dictionary( ) {
         } , [ word2 ] 
     )
 */
+
+// <form /> can use 'enter' key to submmit
     return ( 
-        <>
+        < form onSubmit = {
+            () => {
+                navigate( '/definition/' + word ) ;
+            }
+        } >
             <h2>What you want to search:</h2>
             <input 
                 type='text' 
@@ -50,13 +56,7 @@ export default function Dictionary( ) {
                 setWord( event.target.value ) ;
                 }} 
             />
-            <button 
-                onClick = { ( ) => {
-                    navigate( '/definition/' + word, { replace : true } )  // for more, see redirect
-                } }
-            >
-                search
-            </button>
-        </>
+            <button>Search</button>
+        </form>
     )
 }
