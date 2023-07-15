@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from 'react' ;
+import Button from 'react-bootstrap/Button' ;
+import Modal from 'react-bootstrap/Modal' ;
 
 function EditEmployee( props ) {
   const [ name, setName ] = useState( props.name ) ;
   const [ role, setRole ] = useState( props.role ) ;
 
-  const [show, setShow] = useState(false);
+  const [ show, setShow ] = useState( false ) ;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = ( ) => setShow( false ) ;
+  const handleShow = ( ) => setShow( true ) ;
 
   return (
     <>
       <Button 
-        onClick={handleShow}
+        onClick={ handleShow }
         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500... "
       >  
         Update
@@ -26,7 +26,6 @@ function EditEmployee( props ) {
         backdrop = "static"
         keyboard = { false }
       >
-
         <Modal.Header closeButton>
           <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
@@ -41,14 +40,12 @@ function EditEmployee( props ) {
             id='editmodal' 
             className="w-full max-w-sm"
           >
-            
             <div className="md:flex md:items-center mb-6">
               <div className="md:w-1/3">
                 <label 
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" 
                   htmlFor="employee-name"
                 >
-                
                   Employee Name
                 </label>  
               </div>

@@ -2,7 +2,7 @@ import DifinitionSearch from '../components/DefinitionSearch' ;
 
 export default function Dictionary( ) {
     return( 
-        <div className="flex justify-center">
+        <div className = " flex justify-center ">
             < DifinitionSearch />
         </div>
     )

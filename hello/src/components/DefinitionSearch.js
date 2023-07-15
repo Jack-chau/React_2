@@ -15,12 +15,16 @@ export default function DefinitionSearch( ) {
             <input
                 className = " shrink min-w-0 px-2 py-1 rounded "
                 placeholder = " Dinosaur "
-                type='text' 
+                type = " text " 
                 onChange={ ( event ) => {
                 setWord( event.target.value ) ;
                 }} 
             />
-            <button className = 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded py-1 px-2 ' >Search</button>
+            <button 
+                className = " bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 rounded py-1 px-2 "
+            >
+                Search
+            </button>
         </form>
     )
 }

@@ -8,5 +8,4 @@ export default function NotFound( ) {
     )
 }
 
-
 //< Link to = "/dictionary" >Search another</Link>

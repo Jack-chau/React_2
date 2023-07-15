@@ -16,8 +16,8 @@ export default function Definition( ) {
     useEffect (
         () => {
             const httpErrorUrl = 'http://httpstat.us/501' ;
-            const dictionaryUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + search 
-            const fakeUrl = "http://chk.com"
+            const dictionaryUrl = 'ttps://api.dictionaryapi.dev/api/v2/entries/en/' + search 
+            const fakeUrl = 'http://chk.com'
             async function logJSONData() {
                 const response = await fetch( dictionaryUrl ) ;
                 // console.log( response.status )
@@ -55,7 +55,7 @@ export default function Definition( ) {
         return ( 
             <>
                 <NotFound></NotFound>
-                <Link to = '/dictionary'>Search another</Link>
+                <Link to = '/dictionary' >Search another</Link>
             </>
          )
     } else if( error === true ) {
@@ -81,7 +81,7 @@ export default function Definition( ) {
                                 ) ;
                             } ) }
                             <p>Search again:</p>
-                            < DefinitionSearch />
+                            < DefinitionSearch /> {/*Not Dictionary, because the formating went wrong*/}
                         </>
                     : ( 
                         null
