@@ -16,9 +16,9 @@ export default function Definition( ) {
     useEffect (
         () => {
             const httpErrorUrl = 'http://httpstat.us/501' ;
-            const dictionaryUrl = 'ttps://api.dictionaryapi.dev/api/v2/entries/en/' + search 
+            const dictionaryUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + search 
             const fakeUrl = 'http://chk.com'
-            async function logJSONData() {
+            async function log_JSON_Data() {
                 const response = await fetch( dictionaryUrl ) ;
                 // console.log( response.status )
                 if ( response.status === 404 ) {
@@ -45,7 +45,7 @@ export default function Definition( ) {
                 setWord( jsonData[ 0 ].meanings ) ; //word in useState
             }
 
-            logJSONData( ) ;
+            log_JSON_Data( ) ;
 
         } , []
     ) ;
