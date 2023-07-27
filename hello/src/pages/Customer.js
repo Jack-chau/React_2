@@ -1,6 +1,5 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Component, useEffect, useState } from 'react' ;
-import NotFound from "../components/404";
+import {  useEffect, useState } from 'react' ;
 import { baseUrl } from '../shared'
 
 export default function Customer( ) {
@@ -17,19 +16,14 @@ export default function Customer( ) {
                 console.log( response.status ) ;
                 if( response.status === 404 ) {
                     setNotFound( true ) ;
-                } else if( response.status === 500 ) {
-                    console.log( response.status ) ;
-                    navigate( '/500' ) ;
-                }else if( response.status === 200 ){
-                    console.log( 'health' ) ;
                 }
-                else { 
-                    const data = await response.json( ) ;    
+                else {
+                    const data = await response.json( ) ;
                     setCustomer( data.customer ) ;
                 }
             } ;
             customer( ) ;
-    }, [ ] ) ; 
+    }, [ ] ) ;
 
     return (
         <>
@@ -43,6 +37,26 @@ export default function Customer( ) {
                     </div>
                 ) : null
             }
+            <button 
+                onClick = { ( ) => {
+                    const url = baseUrl + 'api/customers/' + id ;
+                    fetch( url, { 
+                        method : 'DELETE' ,
+                        headers: {
+                        'Content-Type' : 'application/json' ,
+                        },
+                     } )
+                    .then( (response) => {
+                        if( !response.ok ) {
+                            throw new Error( 'something went wrong' )
+                        }
+                        navigate( '/customers' ) ;
+                        //assume things went well
+                    } )
+                    .catch( (error) => { console.log( error ) } )
+                } }
+            >Delete</button>
+            <br></br>
             <Link to='/customers/'>Search another</Link>
         </>
     ) ;

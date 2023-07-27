@@ -1,7 +1,8 @@
 // import Header from '../components/Header' ;
-import { useEffect, useState} from 'react' ;
+import { useEffect, useState } from 'react' ;
 import { Link } from 'react-router-dom'
 import { baseUrl } from '../shared'
+import AddCustomer from '../components/AddCustomer';
 
 export default function Customers() {
     const [ customers, setCustomers ] = useState( ) ;
@@ -16,7 +17,6 @@ export default function Customers() {
                 console.log( data ) ;
                 setCustomers( data ) ;
             } )
-
     }, [ ] ) ;
 */
 
@@ -26,21 +26,29 @@ export default function Customers() {
                 console.log( 'fetching...' );
                 const response = await fetch( baseUrl + 'api/customers/' ) ;
                 const customersData = await response.json( ) ;
-                console.log( customersData ) ;
                 setCustomers( customersData.customers );
+                
             } ;
+            
             fetch_Customers( ) ;
         }, [ ] ) ;
+
+    function newCustomer( ) {
+        console.log( 'adding customer......' ) ;
+    }
     return ( 
         <>
             <h1>Here are our customer:</h1>
-            { customers ? customers.map( ( customer ) => {
-                return (
-                    <p>
-                        <Link to={'/customers/' + customer.id} >{ customer.name }</Link>
-                    </p>
-                )
-            } ) : null }
+            <ul>
+                { customers ? customers.map( ( customer ) => {
+                    return (
+                            <li key = { customer.id } >
+                                <Link to={'/customers/' + customer.id} >{ customer.name }</Link>
+                            </li>
+                    )
+                } ) : null }
+            </ul>
+        <AddCustomer newCustomer = { newCustomer } />
         </>
     ) ;
 }
