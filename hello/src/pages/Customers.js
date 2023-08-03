@@ -1,5 +1,5 @@
 // import Header from '../components/Header' ;
-import { useEffect, useState } from 'react' ;
+import { useEffect, useState, JSON } from 'react' ;
 import { Link } from 'react-router-dom'
 import { baseUrl } from '../shared'
 import AddCustomer from '../components/AddCustomer';
@@ -33,9 +33,25 @@ export default function Customers() {
             fetch_Customers( ) ;
         }, [ ] ) ;
 
-    function newCustomer( ) {
-        console.log( 'adding customer......' ) ;
+    async function new_Customer( name, industry ) {
+        const data = { 'name': name,  'industry': industry } ;
+        const url = baseUrl + 'api/customers/' ;
+        const response = await fetch( url, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body : data, 
+        } )
+
+
+
+        if ( !response.ok ) {
+            const message = 'An error has occured: ' + response.status ;
+            throw new Error( message ) ;
+        }
     }
+
     return ( 
         <>
             <h1>Here are our customer:</h1>
@@ -48,7 +64,7 @@ export default function Customers() {
                     )
                 } ) : null }
             </ul>
-        <AddCustomer newCustomer = { newCustomer } />
+        <AddCustomer newCustomer = { new_Customer } />
         </>
     ) ;
 }
