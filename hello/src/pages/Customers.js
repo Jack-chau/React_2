@@ -1,24 +1,11 @@
 // import Header from '../components/Header' ;
-import { useEffect, useState, JSON } from 'react' ;
+import { useEffect, useState } from 'react' ;
 import { Link } from 'react-router-dom'
 import { baseUrl } from '../shared'
 import AddCustomer from '../components/AddCustomer';
 
 export default function Customers() {
     const [ customers, setCustomers ] = useState( ) ;
-/*
-    useEffect( ( ) => {
-        console.log( 'Fetching' ) ;
-        fetch( 'htt://localhost:8000/api/customers' )
-            .then( ( response ) => {
-                response.json( ) ;
-            } )
-            .then( ( data ) => {
-                console.log( data ) ;
-                setCustomers( data ) ;
-            } )
-    }, [ ] ) ;
-*/
 
     useEffect( 
         () => {
@@ -29,23 +16,20 @@ export default function Customers() {
                 setCustomers( customersData.customers );
                 
             } ;
-            
             fetch_Customers( ) ;
         }, [ ] ) ;
+
 
     async function new_Customer( name, industry ) {
         const data = { 'name': name,  'industry': industry } ;
         const url = baseUrl + 'api/customers/' ;
         const response = await fetch( url, {
-            method: 'POST',
+            method: 'POST' ,
             headers: {
-                'Content-Type' : 'application/json'
-            },
-            body : data, 
+                'Content-Type' : 'application/json' ,
+            } ,
+            body : JSON.stringify( data ) ,
         } )
-
-
-
         if ( !response.ok ) {
             const message = 'An error has occured: ' + response.status ;
             throw new Error( message ) ;
