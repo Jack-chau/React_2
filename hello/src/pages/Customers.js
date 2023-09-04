@@ -7,8 +7,14 @@ import AddCustomer from '../components/AddCustomer';
 export default function Customers() {
     const [ customers, setCustomers ] = useState( ) ;
 
+    const [ show, setShow ] = useState( false ) ;
+
+    function toggleShow( ) {
+        setShow( !show )
+     } 
+
     useEffect( 
-        () => {
+        ( ) => {
             async function fetch_Customers( ) {
                 console.log( 'fetching...' );
                 const response = await fetch( baseUrl + 'api/customers/' ) ;
@@ -21,7 +27,7 @@ export default function Customers() {
 
 
     async function new_Customer( name, industry ) {
-        const data = { 'name': name,  'industry': industry } ;
+        const data = { name: name,  industry: industry } ;
         const url = baseUrl + 'api/customers/' ;
         const response = await fetch( url, {
             method: 'POST' ,
@@ -29,11 +35,18 @@ export default function Customers() {
                 'Content-Type' : 'application/json' ,
             } ,
             body : JSON.stringify( data ) ,
-        } )
+        } ) ;
+
+        console.log( data ) ;
+
         if ( !response.ok ) {
             const message = 'An error has occured: ' + response.status ;
             throw new Error( message ) ;
         }
+        toggleShow( ) ;
+        setCustomers( [ ...customers, data ] ) ;
+        console.log( data ) ;
+
     }
 
     return ( 
@@ -48,7 +61,7 @@ export default function Customers() {
                     )
                 } ) : null }
             </ul>
-        <AddCustomer newCustomer = { new_Customer } />
+        <AddCustomer newCustomer = { new_Customer } show = { show } toggleShow = { toggleShow } />
         </>
     ) ;
 }

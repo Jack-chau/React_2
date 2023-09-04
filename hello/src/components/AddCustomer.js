@@ -5,20 +5,21 @@ import Modal from 'react-bootstrap/Modal';
 export default function AddCustomer( props ) {
   const [ name, setName ] = useState( '' ) ;
   const [ industry, setIndustry ] = useState( '' ) ;
-  const [ show, setShow ] = useState( false ) ;
+  const [ show, setShow ] = useState( props.show ) ;
+
   const handleClose = ( ) => setShow( false ) ;
   const handleShow = ( ) => setShow( true ) ;
 
   return (
     <>
       <Button 
-        onClick = { handleShow }
+        onClick = { props.toggleShow }
         className = "block mx-auto m-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
       >  
         +  Add Customer
       </Button >
       < Modal 
-        show = { show }
+        show = { props.show }
         onHide = { handleClose }
         backdrop = "static"
         keyboard = { false }
@@ -39,7 +40,7 @@ export default function AddCustomer( props ) {
           >
             <div className = " md:flex md:items-center mb-6 " >
               <div className = " md:w-1/3 " >
-                <label 
+                <label
                   className = " block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 "
                   htmlFor = " customer-name "
                 >
@@ -51,7 +52,7 @@ export default function AddCustomer( props ) {
                   className = " bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 " 
                   id = " name " 
                   type = " text "
-                  placeholder = 'Google'
+                  placeholder = 'Jack Chau'
                   value = { name }
                   onChange = { 
                     ( e ) => {
@@ -73,7 +74,7 @@ export default function AddCustomer( props ) {
                 <input 
                   className = "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id = 'industry'
-                  placeholder = 'Computing'
+                  placeholder = 'Google'
                   type = "text"
                   value = { industry }
                   onChange = { 
@@ -89,13 +90,12 @@ export default function AddCustomer( props ) {
         <Modal.Footer>
           <button 
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" 
-            onClick={ handleClose }
+            onClick={ props.toggleShow }
           >
               Close
           </button>
           <button 
             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-            onClick={ handleClose }
             form="editmodal"
           >
             Add
